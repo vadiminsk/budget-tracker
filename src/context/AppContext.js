@@ -20,6 +20,15 @@ class MyProvider extends Component {
     }));
   };
 
+  removePlayerHandler = (idx) => {
+    let newArray = this.state.expenses;
+    newArray.splice(idx, 1);
+
+    this.setState({
+      expenses: newArray,
+    });
+  };
+
   render() {
     return (
       <AppContext.Provider
@@ -27,6 +36,7 @@ class MyProvider extends Component {
           budget: this.state.budget,
           expenses: this.state.expenses,
           addPlayer: this.addPlayerHandler,
+          removePlayer: this.removePlayerHandler,
         }}
       >
         {this.props.children}
